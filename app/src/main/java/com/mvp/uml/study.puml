@@ -1,0 +1,55 @@
+@startuml
+
+
+abstract class AbstractList
+abstract AbstractCollection
+interface List
+interface Collection
+
+List <|-- AbstractList
+Collection <|-- AbstractCollection
+
+Collection <|- List
+AbstractCollection <|- AbstractList
+AbstractList <|-- ArrayList
+
+class Teacher {
+public  List<Student>;
+public  Object;
+public void teacherStu();
+}
+
+
+class Student {
+public  List<Teacher>;
+public void studyFrom();
+}
+
+class Object {
+public  List<Student>;
+
+}
+
+interface List{
+Object[] elementData
+size()
+}
+
+
+interface Collection{
+Object[] elementData
+size()
+}
+
+
+enum TimeUnit {
+DAYS
+HOURS
+MINUTES
+}
+
+Teacher <|-- Student
+Student <|-- Object
+Object <|-- TimeUnit
+Teacher <|-- Object
+@enduml

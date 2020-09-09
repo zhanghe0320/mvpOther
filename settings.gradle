@@ -1,0 +1,2 @@
+rootProject.name='onesmock'
+include ':app',':rocket',':autosize' ,':commonLib',':gdcplibrary',':easythread'

@@ -1,0 +1,101 @@
+ext {
+    //安装两个插件 plantUML          时序图插件
+    //安装两个插件 key promoter x   快捷键插件
+    //安装两个插件 checkstyle      快捷键插件
+
+    // 统一基本版本信息
+    android = [
+            buildToolsVersion: "28.0.3",
+            compileSdkVersion: 28,
+            minSdkVersion    : 16,
+            targetSdkVersion : 28,//22 可以绕过6.0动态获取权限
+            versionCode      : 2,
+            versionName      : "0.0.2",
+            multiDexEnabled  : true
+    ]
+
+    // 统一基础依赖
+    dependencies = [
+            v4              : 'com.android.support:support-v4:28.0.0',
+            v7              : 'com.android.support:appcompat-v7:28.0.0',
+            desigin         : 'com.android.support:design:28.0.0',
+            recyclerview    : 'com.android.support:recyclerview-v7:28.0.0',
+            fastjson        : 'com.alibaba:fastjson:1.2.58',
+            multidex        : 'com.android.support:multidex:1.0.1',
+    ]
+}
+
+//配置文件信息  可以在此处设置
+ext {
+    minSdkVersion = 14
+    targetSdkVersion = 29
+    compileSdkVersion = 29
+    buildToolsVersion = "29.0.2"
+    versionCode = 40
+    versionName = "1.2.0"
+    appcompat_v7 = "com.android.support:appcompat-v7:28.0.0"
+    androidx_appcompat = "androidx.appcompat:appcompat:1.1.0"
+}
+
+//App
+def app_version = [:]
+app_version.versionCode = 19    //androidx 20
+app_version.versionName = "1.1.6"
+ext.app_version = app_version
+
+//build version
+def build_versions = [:]
+build_versions.minSdk = 16
+build_versions.targetSdk = 28
+build_versions.compileSdk = 28
+build_versions.buildTools = "28.0.3"
+ext.build_versions = build_versions
+
+ext.deps = [:]
+
+// App dependencies
+def versions = [:]
+//support
+versions.supportLibrary = "28.0.0"
+versions.constraintLayout = "1.1.3"
+
+//test
+versions.junit = "4.12"
+versions.runner = "1.0.2"
+versions.rules = "1.0.2"
+versions.espresso = "3.0.2"
+
+//zxing
+versions.zxing = "3.3.3"
+
+versions.easypermissions = "2.0.1"
+
+
+
+//support
+def support = [:]
+support.design = "com.android.support:design:$versions.supportLibrary"
+support.appcompat = "com.android.support:appcompat-v7:$versions.supportLibrary"
+support.constraintlayout = "com.android.support.constraint:constraint-layout:$versions.constraintLayout"
+deps.support = support
+
+//test
+def test = [:]
+test.junit = "junit:junit:$versions.junit"
+test.runner = "com.android.support.test:runner:$versions.runner"
+test.espresso = "com.android.support.test.espresso:espresso-core:$versions.espresso"
+deps.test = test
+
+//zxing
+deps.zxing = "com.google.zxing:core:$versions.zxing"
+
+//permission
+deps.easypermissions = "pub.devrel:easypermissions:$versions.easypermissions"
+
+ext.deps = deps
+
+def addRepos(RepositoryHandler handler) {
+    handler.google()
+    handler.jcenter()
+}
+ext.addRepos = this.&addRepos

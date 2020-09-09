@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="25dp"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:id="@+id/relativelayout">
+
+
+    <TextView
+        android:id="@+id/status_left"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="返回"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/status_center"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        style="@style/button_style_notop"
+        android:layout_weight="7"
+        android:gravity="center"
+        android:text="按钮4"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/status_right"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="设置"
+        android:textSize="16sp" />
+
+
+</LinearLayout>

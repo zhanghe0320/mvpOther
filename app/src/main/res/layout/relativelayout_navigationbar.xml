@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="30dp"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:id="@+id/relativelayout">
+
+
+    <TextView
+        android:id="@+id/navigation_one"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="按钮1"
+        android:textSize="16sp" />
+    <View
+        android:id="@+id/navigation_v1"
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/colorAccent">
+
+    </View>
+    <TextView
+        android:id="@+id/navigation_two"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="按钮2"
+        android:textSize="16sp" />
+    <View
+        android:id="@+id/navigation_v2"
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/colorAccent">
+
+    </View>
+
+    <TextView
+        android:id="@+id/navigation_three"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="按钮3"
+        android:textSize="16sp" />
+    <View
+        android:id="@+id/navigation_v3"
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/colorAccent">
+
+    </View>
+    <TextView
+        android:id="@+id/navigation_four"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="按钮4"
+        android:textSize="16sp" />
+    <View
+        android:id="@+id/navigation_v4"
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/colorAccent">
+
+    </View>
+    <TextView
+        android:id="@+id/navigation_five"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="按钮5"
+        android:textSize="16sp" />
+
+
+</LinearLayout>

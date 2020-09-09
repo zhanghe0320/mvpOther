@@ -1,0 +1,251 @@
+gradlew.bat assemblerelease     release 包打包
+gradlew.bat assembleDebug       debug 打包
+adb shell pm clear xxxx 清除缓存
+adb install -r -t -d   安装apk  
+adb uninstall xxxx  卸载apk
+adb shell dumpsys activity activities | grep -i -e stack -e hist  -e run  查看当前的栈结构
+
+adb devices 
+指定序列号
+adb -s d51ad9ff shell
+//进入模拟器 adb -e shell
+
+//进入手机 adb -d shell
+
+删除指定文件
+rm java_pid2820.hprof  不提交
+
+
+git pull --rebase
+git reset 1e3e9d0  
+git reset --hard 1e3e9d062350efd94b9a08c1b3317f13e74cfba0    强制回退到某个节点 放弃修改
+git log --oneline -10  查看10条提交记录
+
+git checkout 切换分支  
+
+
+如果有冲突  使用以下操作，相当于将 前面某个人的提交信息合并到自己的代码上形成新的提交记录，
+一种是保存原有的操作记录，一种是形成新的操作记录
+git cherry-pick 1e3e9d062350efd94b9a08c1b3317f13e74cfba0，检出记录 合并到当前的分支
+git cherry-pick --continue  							  解决冲突之后继续检出某个记录
+git cherry-pick --abort 								  放弃操作
+
+
+检出合并到当前的合并，解决冲突之后，不合并提交记录，保留原有提交记录
+git pull --rebase 
+git rebase --continue  继续rebase  合并代码数据
+git rebase --abort 放弃本次 rebase
+
+
+git reflog 查看log，可以回退日志包含的节点，通过chenkout 检出，或者cherry-pick  进行合并
+git stash  暂存文件   文件暂存只是存放此次修改的文件，不会保存全部
+git stash list 查看暂存记录  暂存功能只是暂存当前改动的文件 不会 暂存所有的文件，可能会丢失文件
+git stash apply xxx 恢复某一条暂存记录
+git show xx 查看某条commit 变化
+
+拉取代码   git pull --rebase  当有冲突的时候 会暂停  
+		   解决冲突后 查看代码状态 使用指令 git rebase --continue  继续合并代码
+           git status 
+		   git add .
+		   git rebase --continue  继续rebase  合并代码数据
+		   合并之后  进行追加代码
+		
+		   git add -A
+		   git commit -m""
+		   git push 
+		   
+	   
+	
+查看某个文件的历史修改记录	
+cd packages/apps/Mms/src/com/android/mms/ui/【路径】
+git log --pretty
+然后使用下面的命令可列出文件的所有改动历史，注意，这里着眼于具体的一个文件，而不是git库，如果是库，那改动可多了去了～
+git log --pretty=oneline 【文件名】			==》具体文件信息
+git show 【ID】								==》显示记录
+
+		
+
+
+
+
+git 常用命令
+创建版本库
+git clone <url> 克隆远程仓库   ==》如果本地没有版本库，包含创建本地版本库
+git init         初始化本地版本库
+
+修改提交
+git status 查看本地修改状态
+git diff   比较本地修改与ADD 不一致修改
+git add.   提交修改过的所有文件
+git add<file> 提交指定文件
+git mv <old> <new> 将某个文件名称修改为新的名称
+git rm<file> 删除指定文件
+git rm --cached <file> 停止某个文件的上传 但是不删除本地文件
+git commit -m "commit message> 提交修改到本地仓库
+git commit --amend  对上一次的修改追加提交
+
+查看历史
+git log 查看提交历史
+git log -p <file> 查看指定问价的提交历史
+git blame <file> 以列表的方式查看提交历史
+git reflog  查看历史记录，可以回复到任意历史记录的代码
+git log --oneline -10 查看最近十条记录
+
+撤销
+git reset --hard HEAD 撤销所有没提交的修改  commit 
+git checkout HEAD <file> 撤销指定已经修改未提交的文件
+git revert <commit> 撤销指定的提交
+
+
+分支
+git branch 本地分支
+git branch -a 所有分支
+git checkout <branch/tag> 切换到指定分支
+git branch <newbranch/tag> 创建新的
+git branch -d <branch> 删除本地分支
+git branch --track <branch><remote-branch>	 新建一个分支，与指定的远程分支建立追踪关系
+git branch -d <branch-name>	 删除分支
+git push origin --delete <branch-name>	删除远程分支
+git checkout -b <branch-name>	新建一个分支，并切换到该分支
+git tag 所有标签
+git tag <tagname> 基于最新创建标签
+git tag -d <tagname>删除标签
+
+合并之后
+git merge<branch>合并指定分支到当前分支
+git rebase 
+
+远程
+git remote -v 查看远程版本库
+git remote show<remote> 查看指定远程版本库
+git remote add<remote> <url>添加远程仓库
+
+git fetch<remote> 获取远程代码
+git pull <remote><branch>下载远程合并到本地分支
+git push <remote><branch>上传代码到远程
+git push <remote>:<branch>删除远程合并到本地分支
+git push --tags 上传标签
+
+git cherry-pick --continue//解决冲突后，继续cherry-pick
+git cherry-pick --quit
+git cherry-pick --abort//终止本次cherry-pick回到之前的状态  放弃修改
+git merge --abort #如果Git版本 >= 1.7.4
+git reset --merge #如果Git版本 >= 1.6.1
+	
+git reset --hard 1d7444 #回退到某个版本  强制回退
+git cherry-pick 626335 #将某次commit的更改应用到当前版本
+git cherry-pick …
+git push origin HEAD --force  #强制提交  
+
+
+rebase
+
+    git log查看需要合并哪些commit
+    git rebase -i XXX（commit的ID，基于XXX之后的所有commit要合并）
+    编辑界面中，保留一个pick，其他改为s，然后保存退出。
+    编辑commit message界面中，不需要的信息#注释，然后保存退出。
+    提交
+
+reset
+
+    git log查看不需要合并的最后一个commit id
+    git reset XXX(回退到该commit，即不需要合并的最后一个commit)
+    log中所有需要合并的commit 已被去掉，并且这些commit的修改没有保存，于是git add . 把所有修改加入commit。
+    git commit提交即可
+
+	
+查看自己的提交记录	
+status:merged branch:vivo_browser_trunk_EX owner:"zhangheosc <72085597@bbktel.com>"   指定分支
+status:merged owner:"zhangheosc <72085597@bbktel.com>"   所有的提交记录
+
+
+自定义View
+
+android 颜色模式
+ARGB8888 四通道高精度 32
+ARGB4444 四通道低精度 16
+RGB      Android 默认模式
+Aipha8   仅有透明通道
+A(Alpha) 透明度  0-255 透明-不透明
+R(Red) 红色 无色-红色
+G(Green) 绿色 无色-绿色   数值小-到，颜色浅-深 最小为黑色0x 000000，最大为白色 0x FFFFFF
+B(Blue) 蓝色 无色-绿色
+
+  #f00            //低精度 - 不带透明通道红色
+  #af00           //低精度 - 带透明通道红色
+
+  #ff0000         //高精度 - 不带透明通道红色
+  #aaff0000       //高精度 - 带透明通道红色
+  
+  
+触摸位置数据
+e.getX() view 内部的坐标系
+e.getRawX 屏幕坐标系
+
+在某些情况下，需要多次测量（measure）才能确定View最终的宽/高；
+该情况下，measure过程后得到的宽 / 高可能不准确；
+此处建议：在layout过程中onLayout()去获取最终的宽 / 高
+
+
+
+
+
+关于主线程，子线程，进程。
+当应用图标被点击的时候，
+ActivityManagerService
+应用启动过程==》
+Launcher是一个应用，用于启动APP；
+APP图标被点击之后，会通过ActivityManagerService，启动相应的app，此处启动新的进程
+
+ActivityThread.java  新启动进程需要加载的类，主函数中包含 Looper.prepareMainLooper();
+
+进程
+  进程启动后，会创建APP主线程
+  一个APP就是一个进程，进程内只有一个主线程，还有N个子线程
+  
+关于线程
+  主线程相当于分配分发任务到各个子线程进行处理，等待接收子线程的任务处理结果，
+  随后进行相应的界面处理。
+  
+  主线程启动之后，创建自己独有的Looper对象，和一个独有的MessageQueue,
+  MessageQueue是一个消息队列，里面存放有很多消息。
+  Looper对象会通过loop()函数不断循环从MessageQueue中取出消息并处理，
+  而当MessageQueue中没有消息时，loop()函数将阻塞在那，直到有消息为止。
+  只是主线程的操作
+  
+  主线程 1.启动子线程，进行各项任务 2.进行UI更新
+  
+  子线程用于单独的任务
+  子线程处理耗时任务，处理完成之后告知主线程， 发送消息到主线程更新UI
+  
+  Looper.getMainLooper()  获取主线程
+  
+  子线程的使用，使用线程池处理数据
+  列如，创建唯一的线程池，用于管理全局的子线程任务
+  子线程任务创建后，自行执行，执行完毕进行UI更新，发送到主线程
+  使用过程中，需要判断当前界面是否存在
+  之后进行UI更新，当界面destroy 之后 进行取消任务，不进行UI更新，
+  防止内存泄露，
+
+  
+  
+  关于线程的其他问题
+  android 
+  
+  
+  
+  
+思路
+	android，底层监听事件，传递事件，处理交由最外层的处理，结束。
+	关于view绘制，view是mvp架构，内部监听事件，传递到顶层，只保留回调监听，交给外界
+	监听，处理事件，实现需要思考。
+	
+	
+	封装顶部统一的标题栏，统一的底部导航栏===》
+	统一封装的导航栏需要传入控制器，用于分发导航和事件到各个界面，各个界面需要实现导航
+	栏对应的按钮点击事件的回调
+	adapter提供AdapterItemOnclick回调函数，需要点击事件回调的实现接口，实现回调
+	个人认为，adapter 点击事件只与adapter 有关，出现点击事件，
+	可以在model,presenter，view 单独添加处理，此处只在view 直接更改数据.
+	
+	
